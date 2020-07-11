@@ -15,6 +15,7 @@ public class CollectionTestSuite {
     }
     @Test
     public void testOddNumbersExterminatorEmptyList() {
+        System.out.println("testOddNumbersExterminatorEmptyList");
         ArrayList<Integer> emptyTestList = new ArrayList<>();
         OddNumbersExterminator oddNumbers = new OddNumbersExterminator();
         List<Integer> result = oddNumbers.exterminate(emptyTestList);
@@ -22,6 +23,7 @@ public class CollectionTestSuite {
     }
     @Test
     public void testOddNumbersExterminatorNormalList() {
+        System.out.println("testOddNumbersExterminatorNormalList");
         ArrayList<Integer> testList = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
             if (i % 2 == 0) {

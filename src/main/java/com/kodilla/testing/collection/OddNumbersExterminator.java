@@ -9,9 +9,6 @@ public class OddNumbersExterminator {
                 evenNumbers.add(evenNumber);
             }
         }
-        for (Integer spr:evenNumbers){
-            System.out.println("SPR"+spr);
-        }
         return evenNumbers;
     }
 }
