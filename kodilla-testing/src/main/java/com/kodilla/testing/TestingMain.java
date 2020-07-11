@@ -1,8 +1,10 @@
 package com.kodilla.testing;
 import com.kodilla.testing.calculator.Calculator;
 
+
 public class TestingMain {
     public static void main(String[] args){
+        //Testing Calculator class
         Calculator calculator = new Calculator();
         int a = 3;
         int b = 2;
