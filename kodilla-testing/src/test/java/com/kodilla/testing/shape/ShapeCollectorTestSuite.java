@@ -17,28 +17,30 @@ public class ShapeCollectorTestSuite {
         testCounter++;
         System.out.println("Preparing to execute test no: "+testCounter);
     }
-
     @Test
     public void testAddFigure(){
         //Given
         ShapeCollector shapeCollector = new ShapeCollector();
         //When
-        shapeCollector.addFigure(new Circle());
+        Shape theCircle = new Circle();
+        shapeCollector.addFigure(theCircle);
         Shape resultCircle = shapeCollector.shapes.get(0);
         //Then
         Assert.assertEquals(1, shapeCollector.getFigure());
-        Assert.assertEquals(new Circle(), resultCircle);
+        Assert.assertEquals(theCircle, resultCircle);
     }
     @Test
     public void testRemovedFigure(){
         //Given
+        Shape theTriangle = new Triangle();
         ShapeCollector shapeCollector = new ShapeCollector();
-        shapeCollector.addFigure(new Triangle());
+        shapeCollector.addFigure(theTriangle);
         //When
-        shapeCollector.removeFigure(new Circle());
+        Shape theCircle = new Circle();
+        shapeCollector.removeFigure(theCircle);
         Shape resultTriangle = shapeCollector.shapes.get(0);
         //Then
         Assert.assertEquals(1, shapeCollector.getFigure());
-        Assert.assertEquals(new Triangle(), resultTriangle);
+        Assert.assertEquals(theTriangle, resultTriangle);
     }
 }
