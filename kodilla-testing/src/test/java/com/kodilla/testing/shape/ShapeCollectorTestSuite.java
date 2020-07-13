@@ -20,10 +20,10 @@ public class ShapeCollectorTestSuite {
     @Test
     public void testAddFigure(){
         //Given
-        ShapeCollector shapeCollector = new ShapeCollector();
-        //When
         Shape theCircle = new Circle();
+        ShapeCollector shapeCollector = new ShapeCollector();
         shapeCollector.addFigure(theCircle);
+        //When
         Shape resultCircle = shapeCollector.shapes.get(0);
         //Then
         Assert.assertEquals(1, shapeCollector.getFigure());
@@ -33,11 +33,11 @@ public class ShapeCollectorTestSuite {
     public void testRemovedFigure(){
         //Given
         Shape theTriangle = new Triangle();
+        Shape theCircle = new Circle();
         ShapeCollector shapeCollector = new ShapeCollector();
         shapeCollector.addFigure(theTriangle);
-        //When
-        Shape theCircle = new Circle();
         shapeCollector.removeFigure(theCircle);
+        //When
         Shape resultTriangle = shapeCollector.shapes.get(0);
         //Then
         Assert.assertEquals(1, shapeCollector.getFigure());
