@@ -18,15 +18,21 @@ public class Calculate {
         averageCommentsPerPost =  noOfComments/noOfPosts;
     }
     public double getAveragePostsPerUser(){
-        if (averagePostsPerUser==Double.POSITIVE_INFINITY){averagePostsPerUser=0;}
+        if (averagePostsPerUser==Double.POSITIVE_INFINITY){
+            averagePostsPerUser=0;
+        }
         return averagePostsPerUser;
     }
     public double getAverageCommentsPerUser(){
-        if (averageCommentsPerUser==Double.POSITIVE_INFINITY){averageCommentsPerUser=0;}
+        if (averageCommentsPerUser==Double.POSITIVE_INFINITY){
+            averageCommentsPerUser=0;
+        }
         return averageCommentsPerUser;
     }
     public double getAverageCommentsPerPost(){
-        if (averageCommentsPerPost==Double.POSITIVE_INFINITY){averageCommentsPerPost=0;}
+        if (averageCommentsPerPost==Double.POSITIVE_INFINITY){
+            averageCommentsPerPost=0;
+        }
         return averageCommentsPerPost;
     }
     public void showStatistics(){
