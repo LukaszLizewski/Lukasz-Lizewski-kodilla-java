@@ -37,13 +37,13 @@ public class CalculateTestSuite {
         one.calculateAdvStatistics(statisticsMock);
         one.showStatistics();
         //When
-        double averagePostsPerUser = one.averagePostsPerUser;
-        double averageCommentsPerUser = one.averageCommentsPerUser;
-        double averageCommentsPerPost = one.averageCommentsPerPost;
+        double averagePostsPerUser = one.getAveragePostsPerUser();
+        double averageCommentsPerUser = one.getAverageCommentsPerUser();
+        double averageCommentsPerPost = one.getAverageCommentsPerPost();
         //Then
         Assert.assertEquals(0.0, averagePostsPerUser,0.1);
         Assert.assertEquals(1.5, averageCommentsPerUser,0.1);
-        Assert.assertEquals(Double.POSITIVE_INFINITY, averageCommentsPerPost,0.1);
+        Assert.assertEquals(0, averageCommentsPerPost,0.1);
     }
     @Test
     public void testNoOfPosts1000(){
@@ -60,9 +60,9 @@ public class CalculateTestSuite {
         one.calculateAdvStatistics(statisticsMock);
         one.showStatistics();
         //When
-        double averagePostsPerUser = one.averagePostsPerUser;
-        double averageCommentsPerUser = one.averageCommentsPerUser;
-        double averageCommentsPerPost = one.averageCommentsPerPost;
+        double averagePostsPerUser = one.getAveragePostsPerUser();
+        double averageCommentsPerUser = one.getAverageCommentsPerUser();
+        double averageCommentsPerPost = one.getAverageCommentsPerPost();
         //Then
         Assert.assertEquals(3.33, averagePostsPerUser,0.1);
         Assert.assertEquals(1.5, averageCommentsPerUser,0.1);
@@ -83,9 +83,9 @@ public class CalculateTestSuite {
         one.calculateAdvStatistics(statisticsMock);
         one.showStatistics();
         //When
-        double averagePostsPerUser = one.averagePostsPerUser;
-        double averageCommentsPerUser = one.averageCommentsPerUser;
-        double averageCommentsPerPost = one.averageCommentsPerPost;
+        double averagePostsPerUser = one.getAveragePostsPerUser();
+        double averageCommentsPerUser = one.getAverageCommentsPerUser();
+        double averageCommentsPerPost = one.getAverageCommentsPerPost();
         //Then
         Assert.assertEquals(1.5, averagePostsPerUser,0.1);
         Assert.assertEquals(0.0, averageCommentsPerUser,0.1);
@@ -106,9 +106,9 @@ public class CalculateTestSuite {
         one.calculateAdvStatistics(statisticsMock);
         one.showStatistics();
         //When
-        double averagePostsPerUser = one.averagePostsPerUser;
-        double averageCommentsPerUser = one.averageCommentsPerUser;
-        double averageCommentsPerPost = one.averageCommentsPerPost;
+        double averagePostsPerUser = one.getAveragePostsPerUser();
+        double averageCommentsPerUser = one.getAverageCommentsPerUser();
+        double averageCommentsPerPost = one.getAverageCommentsPerPost();
         //Then
         Assert.assertEquals(1.5, averagePostsPerUser,0.1);
         Assert.assertEquals(1.06, averageCommentsPerUser,0.1);
@@ -129,9 +129,9 @@ public class CalculateTestSuite {
         one.calculateAdvStatistics(statisticsMock);
         one.showStatistics();
         //When
-        double averagePostsPerUser = one.averagePostsPerUser;
-        double averageCommentsPerUser = one.averageCommentsPerUser;
-        double averageCommentsPerPost = one.averageCommentsPerPost;
+        double averagePostsPerUser = one.getAveragePostsPerUser();
+        double averageCommentsPerUser = one.getAverageCommentsPerUser();
+        double averageCommentsPerPost = one.getAverageCommentsPerPost();
         //Then
         Assert.assertEquals(1.06, averagePostsPerUser,0.1);
         Assert.assertEquals(1.5, averageCommentsPerUser,0.1);
@@ -149,12 +149,12 @@ public class CalculateTestSuite {
         one.calculateAdvStatistics(statisticsMock);
         one.showStatistics();
         //When
-        double averagePostsPerUser = one.averagePostsPerUser;
-        double averageCommentsPerUser = one.averageCommentsPerUser;
-        double averageCommentsPerPost = one.averageCommentsPerPost;
+        double averagePostsPerUser = one.getAveragePostsPerUser();
+        double averageCommentsPerUser = one.getAverageCommentsPerUser();
+        double averageCommentsPerPost = one.getAverageCommentsPerPost();
         //Then
-        Assert.assertEquals(Double.POSITIVE_INFINITY, averagePostsPerUser,0.1);
-        Assert.assertEquals(Double.POSITIVE_INFINITY, averageCommentsPerUser,0.1);
+        Assert.assertEquals(0, averagePostsPerUser,0.1);
+        Assert.assertEquals(0, averageCommentsPerUser,0.1);
         Assert.assertEquals(1.41, averageCommentsPerPost,0.1);
     }
     @Test
@@ -172,9 +172,9 @@ public class CalculateTestSuite {
         one.calculateAdvStatistics(statisticsMock);
         one.showStatistics();
         //When
-        double averagePostsPerUser = one.averagePostsPerUser;
-        double averageCommentsPerUser = one.averageCommentsPerUser;
-        double averageCommentsPerPost = one.averageCommentsPerPost;
+        double averagePostsPerUser = one.getAveragePostsPerUser();
+        double averageCommentsPerUser = one.getAverageCommentsPerUser();
+        double averageCommentsPerPost = one.getAverageCommentsPerPost();
         //Then
         Assert.assertEquals(3.2, averagePostsPerUser,0.1);
         Assert.assertEquals(4.5, averageCommentsPerUser,0.1);
