@@ -1,5 +1,7 @@
 package com.kodilla.testing.library;
 
+import java.util.List;
+
 public class LibraryUser {
     String firstname;
     String lastname;

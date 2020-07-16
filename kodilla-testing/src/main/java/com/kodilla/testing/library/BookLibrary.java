@@ -5,13 +5,23 @@ import java.util.List;
 
 public class BookLibrary {
     LibraryDatabase libraryDatabase;
+    LibraryUser libraryUser;
     public BookLibrary(LibraryDatabase libraryDatabase){
-        this.libraryDatabase = libraryDatabase;
+       this.libraryDatabase = libraryDatabase;
+    }
+    public BookLibrary(LibraryUser libraryUser) {
+        this.libraryUser = libraryUser;
     }
     public List<Book> listBooksWithCondition (String titleFragment){
         List<Book> bookList = new ArrayList<Book>();
-        Book book = new Book("The book title", "The book author", 2000);
-        bookList.add(book);
+        if (titleFragment.length() < 3) return bookList;
+        List<Book> resultList = libraryDatabase.listBooksWithCondition(titleFragment);
+        if (resultList.size() > 20) return bookList;
+        bookList = resultList;
         return bookList;
+    }
+    public List<Book> listBookInHandsOf(LibraryUser libraryUser) {
+        List<Book> resultList = libraryDatabase.listBooksInHandsOf(libraryUser);
+        return resultList;
     }
 }
