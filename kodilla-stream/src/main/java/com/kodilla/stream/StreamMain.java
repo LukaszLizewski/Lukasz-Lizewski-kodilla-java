@@ -1,14 +1,33 @@
 package com.kodilla.stream;
 
-import com.kodilla.stream.beautifier.PoemBeautifier;
-import com.kodilla.stream.iterate.NumbersGenerator;
-import com.kodilla.stream.lambda.*;
-
-import static jdk.nashorn.internal.objects.NativeString.toUpperCase;
-import static jdk.nashorn.internal.objects.NativeString.trim;
+import com.kodilla.stream.forumuser.Forum;
+import com.kodilla.stream.forumuser.ForumUser;
+import java.time.LocalDateTime;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class StreamMain {
     public static void main(String[] args) {
+        Forum forum = new Forum();
+        Map<Integer, ForumUser> theResultMapOfForumUsers = forum.getUserList().stream()
+                .filter(user->user.getUserSex()=='M')
+                .filter(user->user.getDateOfBirth().getYear()<= LocalDateTime.now().getYear()-20)
+                .filter(user->user.getNoOfPosts()>=1)
+                .collect(Collectors.toMap(ForumUser::getUniqueNumber, forumUser -> forumUser));
+
+        System.out.println("# elements: " + theResultMapOfForumUsers.size());
+        theResultMapOfForumUsers.entrySet().stream()
+                .map(entry -> entry.getKey() + ": " + entry.getValue())
+                .forEach(System.out::println);
+    }
+}
+
+
+
+
+
+        /*
+        PYTANIA
         PoemBeautifier poemBeautifier = new PoemBeautifier();
         poemBeautifier.beautify("abc ", "more beautiful text", " abc", (a, b, c) -> a + b + c);
         poemBeautifier.beautify("==> ", "more beautiful text", " <==", (a, b, c) -> a + b + c);
@@ -35,10 +54,16 @@ public class StreamMain {
         System.out.println(FunctionalCalculator.divideAByB(10, 5));
         System.out.println(FunctionalCalculator.multiplyAByB(10, 5));
         System.out.println(FunctionalCalculator.subBfromA(10, 5));
-
+=======================
         System.out.println("Using Stream to generate even numbers from 1 to 20");
         NumbersGenerator.generateEven(20);
-    }
-}
+=======================
+        BookDirectory theBookDirectory = new BookDirectory();
+        String theResultStringOfBooks = theBookDirectory.getList().stream()
+                .filter(book->book.getYearOfPublication()>2005)
+                .map(Book::toString)
+                .collect(Collectors.joining(",\n","<<",">>"));
+        System.out.println(theResultStringOfBooks);
+        */
 
 
