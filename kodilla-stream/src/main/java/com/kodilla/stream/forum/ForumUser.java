@@ -2,6 +2,7 @@ package com.kodilla.stream.forum;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class ForumUser {
     private final String username;
@@ -51,5 +52,17 @@ public class ForumUser {
     @Override
     public int hashCode() {
         return username.hashCode();
+    }
+    public Set<String> getLocationsOfFriends(){
+        return friends.stream()
+                .map(friend->friend.getLocation())
+                .collect(Collectors.toSet());
+    }
+    public Set<String> getLocationsOfFriendsOfFriends() {
+        return friends.stream()
+                .flatMap(user -> user.getFriends().stream())
+                .filter(user -> user != this)
+                .map(ForumUser::getLocation)
+                .collect(Collectors.toSet());
     }
 }
