@@ -147,7 +147,7 @@ public class BoardTestSuite {
                 .filter(inProgressTask::contains)
                 .flatMap(tl->tl.getTasks().stream())
                 .map(Task::getCreated)
-                .mapToDouble(d->LocalDate.now().getDayOfYear() - d.getDayOfYear())
+                .mapToDouble(d->LocalDate.now().toEpochDay() - d.toEpochDay())
                 .sum();
         double average = sumOfDays/sumOfTasks;
         //Then
@@ -166,7 +166,7 @@ public class BoardTestSuite {
                 .filter(inProgressTask::contains)
                 .flatMap(tl -> tl.getTasks().stream())
                 .map(Task::getCreated)
-                .mapToDouble(d -> LocalDate.now().getDayOfYear() - d.getDayOfYear())
+                .mapToDouble(d -> LocalDate.now().toEpochDay() - d.toEpochDay())
                 .average().getAsDouble();
         //Then
         Assert.assertEquals(10, average, 0.1);
