@@ -17,19 +17,16 @@ public class FlightSearchEngine {
         listOfAirports.put("DXB", false);
         listOfAirports.put("LAX", true);
         if (listOfAirports.containsKey(flight.getArrivalAirport())) {
-            for (Map.Entry<String, Boolean> entry : listOfAirports.entrySet()) {
-                if (flight.getArrivalAirport().matches(entry.getKey())) {
-                    if (entry.getValue()) {
-                        System.out.println("Flight is available");
-                    } else {
-                        System.out.println("Flight is unavailable");
-                    }
-                }
+            if(listOfAirports.get(flight.getArrivalAirport())){
+                System.out.println("Flight is available");
+            } else {
+                System.out.println("Flight is unavailable");
             }
         } else {
             throw new RouteNotFoundException("Destination airport was not found");
         }
     }
 }
+
 
 
