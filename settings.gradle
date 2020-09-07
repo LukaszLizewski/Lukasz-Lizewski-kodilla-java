@@ -4,4 +4,8 @@ include 'kodilla-stream'
 include 'kodilla-exception'
 include 'kodilla-extra'
 include 'kodilla-javaFx'
+include 'kodilla-goog-patterns'
+include 'kodilla-good-patterns'
+include 'kodilla-good-patterns'
+include 'kodilla-temp'
 
