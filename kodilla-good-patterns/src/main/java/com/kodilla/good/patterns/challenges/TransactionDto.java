@@ -8,7 +8,6 @@ public class TransactionDto {
         this.sellRequest = sellRequest;
         this.isItSold = isItSold;
     }
-
     @Override
     public String toString() {
         return "TransactionDto{" +

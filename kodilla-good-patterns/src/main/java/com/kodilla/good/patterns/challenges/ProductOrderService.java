@@ -19,7 +19,7 @@ public class ProductOrderService {
         if (isSold) {
             informationService.informContractors(sellRequest.getUserCustomer(), sellRequest.getUserDealer(), sellRequest.getItems());
             transactionRepository.repository(sellRequest.getUserCustomer(), sellRequest.getUserDealer(), sellRequest.getItems());
-            return new  TransactionDto(sellRequest, true);
+            return new TransactionDto(sellRequest, true);
         } else {
             return new TransactionDto(sellRequest, false);
         }
