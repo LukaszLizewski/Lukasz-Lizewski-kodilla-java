@@ -1,19 +1,18 @@
 package com.kodilla.good.patterns.challenges.quest_2;
 
-import java.util.ArrayList;
-
 public class City {
-    private String nameOfCity;
-    private ArrayList connection;
+    private String departureCity;
+    private String arrivalCity;
 
-    public City(String nameOfCity) {
-        this.nameOfCity = nameOfCity;
+    public City(String departureCity, String arrivalCity) {
+        this.departureCity = departureCity;
+        this.arrivalCity = arrivalCity;
     }
-    public String getNameOfCity() {
-        return nameOfCity;
+    public String getDepartureCity() {
+        return departureCity;
     }
-    public ArrayList getConnection() {
-        return connection;
+    public String getArrivalCity() {
+        return arrivalCity;
     }
     @Override
     public boolean equals(Object o) {
@@ -22,14 +21,20 @@ public class City {
 
         City city = (City) o;
 
-        return nameOfCity.equals(city.nameOfCity);
+        if (!departureCity.equals(city.departureCity)) return false;
+        return arrivalCity.equals(city.arrivalCity);
     }
     @Override
     public int hashCode() {
-        return nameOfCity.hashCode();
+        int result = departureCity.hashCode();
+        result = 31 * result + arrivalCity.hashCode();
+        return result;
     }
-    public void addConnection (City city){
-        connection.add(city);
+
+    @Override
+    public String toString() {
+        return "departure from city ->" + departureCity +"; "+
+                "arrival to City ->" + arrivalCity ;
     }
 }
 

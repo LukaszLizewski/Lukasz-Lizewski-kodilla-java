@@ -8,4 +8,7 @@ include 'kodilla-goog-patterns'
 include 'kodilla-good-patterns'
 include 'kodilla-good-patterns'
 include 'kodilla-temp'
+include 'kodilla_spring-intro'
+include 'kodilla-spring'
+include 'kodilla-spring'
 

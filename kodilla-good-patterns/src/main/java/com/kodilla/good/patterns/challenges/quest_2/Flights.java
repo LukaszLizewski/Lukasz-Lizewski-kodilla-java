@@ -1,44 +1,33 @@
 package com.kodilla.good.patterns.challenges.quest_2;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Flights {
-    public void routes(){
-        City newYork = new City("New York");
-        City losAngeles = new City("Los Angeles");
-        City chicago = new City("Chicago");
-        City phoenix = new City("Phoenix");
-        City philadelphia = new City("Philadelphia[");
-        City sanDiego = new City("San Diego");
-        City dallas = new City("Dallas");
-        City sanJose = new City("San Jose");
-        City austin = new City("Austin");
-        City columbus = new City("Columbus");
-
-        newYork.addConnection(losAngeles);
-        newYork.addConnection(chicago);
-        newYork.addConnection(sanDiego);
-        newYork.addConnection(sanJose);
-        newYork.addConnection(columbus);
-        losAngeles.addConnection(newYork);
-        losAngeles.addConnection(phoenix);
-        losAngeles.addConnection(austin);
-        chicago.addConnection(dallas);
-        chicago.addConnection(philadelphia);
-        chicago.addConnection(losAngeles);
-        phoenix.addConnection(philadelphia);
-        phoenix.addConnection(sanDiego);
-        phoenix.addConnection(sanJose);
-        philadelphia.addConnection(newYork);
-        philadelphia.addConnection(chicago);
-        philadelphia.addConnection(columbus);
-        sanDiego.addConnection(newYork);
-        dallas.addConnection(sanDiego);
-        dallas.addConnection(losAngeles);
-        sanJose.addConnection(newYork);
-        sanJose.addConnection(austin);
-        austin.addConnection(philadelphia);
-        austin.addConnection(phoenix);
-        austin.addConnection(dallas);
-        columbus.addConnection(sanDiego);
-
+        public List<City> getListOfRoutes() {
+        City routes1 = new City("New York","Los Angeles" );
+        City routes2 = new City("Los Angeles","New York");
+        City routes3 = new City("Chicago","Phoenix");
+        City routes4 = new City("Phoenix","New York");
+        City routes5 = new City("Austin","Los Angeles");
+        City routes6 = new City("San Diego","New York");
+        City routes7 = new City("San Diego","Austin");
+        City routes8 = new City("Philadelphia","Austin");
+        City routes9 = new City("Los Angeles","Chicago");
+        City routes10 = new City("Chicago","San Diego");
+        City routes11 = new City("New York","San Diego");
+        List<City> listOfRoutes= new ArrayList<>();
+        listOfRoutes.add(routes1);
+        listOfRoutes.add(routes2);
+        listOfRoutes.add(routes3);
+        listOfRoutes.add(routes4);
+        listOfRoutes.add(routes5);
+        listOfRoutes.add(routes6);
+        listOfRoutes.add(routes7);
+        listOfRoutes.add(routes8);
+        listOfRoutes.add(routes9);
+        listOfRoutes.add(routes10);
+        listOfRoutes.add(routes11);
+        return listOfRoutes;
     }
 }
