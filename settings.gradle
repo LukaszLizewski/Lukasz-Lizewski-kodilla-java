@@ -11,4 +11,5 @@ include 'kodilla-temp'
 include 'kodilla_spring-intro'
 include 'kodilla-spring'
 include 'kodilla-spring'
+include 'kodilla-patterns'
 
