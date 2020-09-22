@@ -26,4 +26,10 @@ public class BigmacTestSuite {
         Assert.assertEquals(4,howManyBurgers);
         Assert.assertEquals("graham",whatBun);
     }
+    public void gjk() {
+
+        String gkl = new String();
+        gkl = "ciąg znakow";
+        gkl.equals(gkl);
+    }
 }
