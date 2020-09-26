@@ -1,7 +1,3 @@
-/*plugins {
-    id 'java'
-}*/
-
 buildscript {
     ext {
         springBootVersion = '2.1.17.RELEASE'
