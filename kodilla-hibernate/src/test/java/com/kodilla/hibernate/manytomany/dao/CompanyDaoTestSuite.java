@@ -87,7 +87,7 @@ public class CompanyDaoTestSuite {
         lindaKovalsky.getCompanies().add(greyMatter);
         //When
         companyDao.save(softwareMachine);
-        List<Company> resultList =companyDao.retrieveCompaniesWithFirstThreeLetters("Sof%");
+        List<Company> resultList =companyDao.retrieveCompaniesWithFirstThreeLetters("Sof");
         int resultListSize = resultList.size();
         int softwareMachineId = softwareMachine.getId();
         companyDao.save(dataMaesters);

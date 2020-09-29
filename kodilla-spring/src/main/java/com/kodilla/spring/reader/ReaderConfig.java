@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Scope;
 
 @Configuration
 public class ReaderConfig {
-
+    @Autowired
     @Qualifier("book2")
     private Book book;
 

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 @NamedNativeQuery(
         name = "Company.retrieveCompaniesWithFirstThreeLetters",
-        query = "SELECT * FROM companies WHERE company_name LIKE :SHORTNAME",
+        query = "SELECT * FROM companies WHERE company_name LIKE concat(:SHORTNAME,\"%\" )",
         resultClass = Company.class
 )
 @Entity

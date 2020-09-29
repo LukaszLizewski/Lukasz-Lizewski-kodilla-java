@@ -58,17 +58,21 @@ public class InvoiceDaoTestSuite {
     public void testInvoiceDaoSave(){
         //Given
         Invoice invoice1 = new Invoice(INVOICE_NO_1);
+        Invoice invoice2 = new Invoice(INVOICE_NO_2);
         Item item1 = new Item(new Product(NAME_OF_PRODUCT_1),new BigDecimal(120),100, new BigDecimal(12000));
         Item item2 = new Item(new Product(NAME_OF_PRODUCT_2),new BigDecimal(100),10, new BigDecimal(1000));
         Item item3 = new Item(new Product(NAME_OF_PRODUCT_3),new BigDecimal(10),1, new BigDecimal(10));
-        invoice1.getItems().add(item1);
+        //invoice1.getItems().add(item1);
         invoice1.getItems().add(item2);
         invoice1.getItems().add(item3);
-        item1.setInvoice(invoice1);
+        invoice2.getItems().add(item1);
+        //item1.setInvoice(invoice1);
         item2.setInvoice(invoice1);
         item3.setInvoice(invoice1);
+        item1.setInvoice(invoice2);
         //When
         invoiceDao.save(invoice1);
+        invoiceDao.save(invoice2);
         int id1 = invoice1.getId();
          List<Invoice> resultList = invoiceDao.findByNumber(INVOICE_NO_1);
         String resultInvoiceNumber = resultList.get(0).getNumber();
