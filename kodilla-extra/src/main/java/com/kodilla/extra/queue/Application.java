@@ -1,4 +1,4 @@
-package com.kodilla.extra;
+package com.kodilla.extra.queue;
 
 public class Application {
     public static void main(String args[]) {

@@ -1,4 +1,6 @@
-package com.kodilla.extra;
+package com.kodilla.extra.queue;
+
+import com.kodilla.extra.queue.Element;
 
 public class StringCollection {
     private Element collectionHead = null;
