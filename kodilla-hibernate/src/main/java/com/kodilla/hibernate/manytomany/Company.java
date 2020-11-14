@@ -1,6 +1,7 @@
 package com.kodilla.hibernate.manytomany;
 
 import com.kodilla.hibernate.task.Task;
+import org.springframework.stereotype.Service;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -11,6 +12,12 @@ import java.util.List;
         query = "SELECT * FROM companies WHERE company_name LIKE concat(:SHORTNAME,\"%\" )",
         resultClass = Company.class
 )
+/*@NamedNativeQuery(
+        name = "Company.retrieveCompaniesWithAnyThreeLetters",
+        query = "SELECT * FROM companies WHERE company_name LIKE concat(\"%\" ,:SHORTNAME,\"%\" )",
+        resultClass = Company.class
+)*/
+@Service
 @Entity
 @Table(name = "COMPANIES")
 public class Company {

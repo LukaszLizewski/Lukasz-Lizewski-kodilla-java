@@ -10,83 +10,87 @@ public class Board {
     private final String QUEEN = "QUEEN";
     private final String PAWN = "PAWN";
     private final String NONE = "NONE";
+    private final String BLACK = "BLACK";
+    private final String WHITE = "WHITE";
     private List<BoardRow> boardRows = new ArrayList<>();
-
-    public void setRows(){
-        BoardRow boardRow0 = new BoardRow();
-        boardRow0.setNones();
-        BoardRow boardRow1 = new BoardRow();
-        boardRow1.setNones();
-        BoardRow boardRow2 = new BoardRow();
-        boardRow2.setNones();
-        BoardRow boardRow3 = new BoardRow();
-        boardRow3.setNones();
-        BoardRow boardRow4 = new BoardRow();
-        boardRow4.setNones();
-        BoardRow boardRow5 = new BoardRow();
-        boardRow5.setNones();
-        BoardRow boardRow6 = new BoardRow();
-        boardRow6.setNones();
-        BoardRow boardRow7 = new BoardRow();
-        boardRow7.setNones();
-        boardRows.add(0,boardRow0);
-        boardRows.add(1,boardRow1);
-        boardRows.add(2,boardRow2);
-        boardRows.add(3,boardRow3);
-        boardRows.add(4,boardRow4);
-        boardRows.add(5,boardRow5);
-        boardRows.add(6,boardRow6);
-        boardRows.add(7,boardRow7);
+    private boolean isPlayerTurn= true;
+    public void setRows () {
+        for ( int i = 0; i<=7; i++){
+            BoardRow boardRow = new BoardRow();
+            boardRow.setNones();
+            boardRows.add(i,boardRow);
+        }
     }
-    public Figure getFigure (int row, int col){
+    public void setFirstPosition () {
+        int row;
+        int col;
+        for (row = 0; row<=2; row=row+2){
+            for (col = 0; col <=6; col = col+2){
+                setFigure(row,col, new Figure(BLACK,PAWN));
+            }
+        }
+        row=6;
+        for (col = 0; col <=6; col = col+2){
+            setFigure(row,col, new Figure(WHITE,PAWN));
+        }
+        for (row = 5; row<=7; row=row+2){
+            for (col = 1; col <=7; col = col+2){
+                setFigure(row,col, new Figure(WHITE,PAWN));
+            }
+        }
+        row=1;
+        for (col = 1; col <=7; col = col+2){
+            setFigure(row,col, new Figure(BLACK,PAWN));
+        }
+    }
+    public Figure getFigure (int row, int col) {
         if (row >=MIN_NO_OF_FIELD && row <=MAX_NO_OF_FIELD && col >=MIN_NO_OF_FIELD && col <=MAX_NO_OF_FIELD){
             BoardRow resultBoardRow = boardRows.get(row);
             return resultBoardRow.getBoardRowList().get(col);
         } else {
-            System.out.println("Given wrong position!");     //exception
+            System.out.println("Given wrong position!!");     //exception
             return null;
         }
     }
-    public void setFigure(int row, int col, Figure figure){
+    public void setFigure (int row, int col, Figure figure) {
         if (row >=MIN_NO_OF_FIELD && row <=MAX_NO_OF_FIELD && col >=MIN_NO_OF_FIELD && col <=MAX_NO_OF_FIELD){
             BoardRow resultBoardRow = boardRows.get(row);
             resultBoardRow.getBoardRowList().remove(col);
             if (figure.getNameOfFigure().equals(QUEEN) || figure.getNameOfFigure().equals(PAWN) || figure.getNameOfFigure().equals(NONE)) {
-                resultBoardRow.getBoardRowList().add(col, new Queen(figure.getColor(), figure.getNameOfFigure()));
+                resultBoardRow.getBoardRowList().add(col, new Figure(figure.getColor(), figure.getNameOfFigure()));
             } else {
                 System.out.println("Wrong figure");
             }
         } else {
-            System.out.println("Given wrong position!");    //exception
+            System.out.println("Given wrong position!!");
         }
     }
-    public String  toString(){
+    public void moveFigure (int rowFrom, int colFrom, int rowTo, int colTo){
+        setFigure(rowTo, colTo, getFigure(rowFrom, colFrom));
+        setFigure(rowFrom, colFrom, new Figure(NONE, NONE));
+        setPlayerTurn(!isPlayerTurn);
+    }
+    public void hitFigure (int rowFrom, int colFrom, int rowTo, int colTo){
+        setFigure(rowTo, colTo, getFigure(rowFrom, colFrom));
+        setFigure(rowFrom, colFrom, new Figure(NONE, NONE));
+    }
+    public String toString () {
+        String s = "";
+        for (int row=0; row<8; row++)
+            s+=rowToString(row);
+        return s;
+    }
 
-        String result = "||"+ boardRows.get(0).getBoardRowList().stream()
-                .map(e->e.toString())
-                .collect(Collectors.joining("|")) + "||" + "\n" +
-                "||"+ boardRows.get(1).getBoardRowList().stream()
-                .map(e->e.toString())
-                .collect(Collectors.joining("|")) + "||" + "\n" +
-                "||"+ boardRows.get(2).getBoardRowList().stream()
-                .map(e->e.toString())
-                .collect(Collectors.joining("|"))+ "||" + "\n" +
-                "||"+ boardRows.get(3).getBoardRowList().stream()
-                .map(e->e.toString())
-                .collect(Collectors.joining("|"))+ "||" + "\n" +
-                "||"+ boardRows.get(4).getBoardRowList().stream()
-                .map(e->e.toString())
-                .collect(Collectors.joining("|"))+ "||" + "\n" +
-                "||"+ boardRows.get(5).getBoardRowList().stream()
-                .map(e->e.toString())
-                .collect(Collectors.joining("|")) + "||" + "\n" +
-                "||"+ boardRows.get(6).getBoardRowList().stream()
-                .map(e->e.toString())
-                .collect(Collectors.joining("|")) + "||" + "\n" +
-                "||"+ boardRows.get(7).getBoardRowList().stream()
-                .map(e->e.toString())
-                .collect(Collectors.joining("|")) + "||" ;
-        return result;
+    private String rowToString(int i) {
+        return "||" + boardRows.get(i).getBoardRowList().stream()
+                .map(Figure::toMark)
+                .collect(Collectors.joining("|")) + "||" + "\n";
+    }
+    public boolean isPlayerTurn() {
+        return isPlayerTurn;
+    }
+    public void setPlayerTurn(boolean playerTurn) {
+        this.isPlayerTurn = playerTurn;
     }
 }
 

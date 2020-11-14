@@ -8,7 +8,7 @@ public class Figure {
     private final String NONE = "NONE";
     private String color;
     private String nameOfFigure;
-    public Figure(String color, String nameOfFigure){
+    public Figure (String color, String nameOfFigure) {
         if (color.equals(BLACK_COLOR) || color.equals(WHITE_COLOR) || color.equals(NONE)) {
             this.color = color;
         } else {
@@ -20,14 +20,13 @@ public class Figure {
             System.out.println("Wrong FIGURE!"); //exception
         }
     }
-    public String getNameOfFigure() {
+    public String getNameOfFigure () {
         return nameOfFigure;
     }
-    public String getColor() {
+    public String getColor () {
         return color;
     }
-    @Override
-    public String toString() {
+    public String toMark () {
         if (color.equals(BLACK_COLOR) && nameOfFigure.equals(QUEEN)) {
             return "bQ";
         } if (color.equals(WHITE_COLOR) && nameOfFigure.equals(QUEEN)) {
@@ -37,7 +36,7 @@ public class Figure {
         } if (color.equals(WHITE_COLOR) && nameOfFigure.equals(PAWN)) {
             return "wP";
         } else {
-            return "  ";
+            return "__";
         }
     }
 }
