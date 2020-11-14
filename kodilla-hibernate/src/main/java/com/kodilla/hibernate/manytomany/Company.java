@@ -12,11 +12,11 @@ import java.util.List;
         query = "SELECT * FROM companies WHERE company_name LIKE concat(:SHORTNAME,\"%\" )",
         resultClass = Company.class
 )
-/*@NamedNativeQuery(
+@NamedNativeQuery(
         name = "Company.retrieveCompaniesWithAnyThreeLetters",
         query = "SELECT * FROM companies WHERE company_name LIKE concat(\"%\" ,:SHORTNAME,\"%\" )",
         resultClass = Company.class
-)*/
+)
 @Service
 @Entity
 @Table(name = "COMPANIES")

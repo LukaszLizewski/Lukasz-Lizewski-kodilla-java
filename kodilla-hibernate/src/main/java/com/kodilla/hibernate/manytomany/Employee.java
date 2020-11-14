@@ -10,9 +10,18 @@ import java.util.List;
         @NamedQuery(
                 name = "Employee.retrieveEmployeeByLastName",
                 query = "FROM Employee WHERE lastname = :LASTNAME"
-        )
+        )/*,
+        @NamedQuery(
+                name = "Employee.retrieveEmployeeByAnyThreeLettersOfLastName",
+                query = "SELECT * FROM Employee WHERE lastname LIKE concat(\"%\" ,:SHORTNAME,\"%\" )"
+        )*/
 })
-//@Service
+@NamedNativeQuery(
+        name = "Employee.retrieveEmployeeByAnyThreeLettersOfLastName",
+        query = "SELECT * FROM Employees WHERE lastname LIKE concat(\"%\",:SHORTNAME,\"%\" )",
+        resultClass = Employee.class
+)
+@Service
 @Entity
 @Table(name = "EMPLOYEES")
 public class Employee {
