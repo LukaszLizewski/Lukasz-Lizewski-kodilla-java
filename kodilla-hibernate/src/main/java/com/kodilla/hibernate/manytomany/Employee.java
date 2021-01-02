@@ -61,6 +61,8 @@ public class Employee {
     private void setLastname(String lastname) {
         this.lastname = lastname;
     }
+
+
     @ManyToMany (cascade = CascadeType.ALL)
     @JoinTable(name = "JOIN_COMPANY_EMPLOYEE",
                joinColumns = {@JoinColumn(name = "EMPLOYEE_ID", referencedColumnName = "EMPLOYEE_ID")},
